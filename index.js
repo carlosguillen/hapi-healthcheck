@@ -7,8 +7,10 @@ internals.handler = function (request, reply) {
 
 exports.register = function (plugin, options, next) {
 
+  var endpoint = options.endpoint || '/healthcheck';
+
   plugin.route([
-    { path: '/healthcheck', method: 'GET', handler: internals.handler }
+    { path: endpoint, method: 'GET', handler: internals.handler }
   ]);
 
   next();
